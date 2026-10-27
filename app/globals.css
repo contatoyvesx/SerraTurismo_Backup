@@ -97,6 +97,23 @@ button, a { outline-offset: 4px; }
   letter-spacing: 0.14em;
 }
 .hero-section { isolation: isolate; }
+
+.header-cta {
+  color: #fffdf8;
+  background: #342b24;
+  box-shadow: 0 5px 16px rgba(52, 43, 36, .12);
+  transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+.header-cta:hover {
+  background: #514334;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(52, 43, 36, .16);
+}
+.hero-visual { isolation: isolate; }
+.hero-photo img { display: block; transition: transform 900ms cubic-bezier(.2,.75,.25,1); }
+.hero-photo:hover img { transform: scale(1.025); }
+.hero-note { z-index: 2; }
+
 .hero-image { animation: hero-zoom 18s ease-in-out infinite alternate; }
 .hero-overlay {
   background:
