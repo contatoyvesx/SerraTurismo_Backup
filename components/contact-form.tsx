@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, type FormEvent } from "react"
 import { CalendarDays, CheckCircle2, MapPin, MessageCircle, Users } from "lucide-react"
 
 const WHATSAPP = "5551981699277"
@@ -12,7 +12,7 @@ export function ContactForm() {
   const [people, setPeople] = useState("2 pessoas")
   const [message, setMessage] = useState("")
 
-  const send = (event: React.FormEvent<HTMLFormElement>) => {
+  const send = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const details = [
       "Olá! Meu nome é " + name + ".",
