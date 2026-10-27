@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, type FormEvent } from "react"
+import { useEffect, useState, type FormEvent } from "react"
 import { CalendarDays, CheckCircle2, MapPin, MessageCircle, Users } from "lucide-react"
 
 const WHATSAPP = "5551981699277"
@@ -77,7 +77,7 @@ export function ContactForm() {
                 <label htmlFor="contact-date" className="mb-2 block text-sm font-medium text-stone-700">Data prevista</label>
                 <div className="relative">
                   <CalendarDays size={17} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-stone-400" aria-hidden="true" />
-                  <input id="contact-date" name="date" type="date" min={new Date().toISOString().split("T")[0]} value={date} onChange={(event) => setDate(event.target.value)} className="form-field pl-11" />
+                  <input id="contact-date" name="date" type="date" min={minDate || undefined} value={date} onChange={(event) => setDate(event.target.value)} className="form-field pl-11" />
                 </div>
               </div>
               <div>
