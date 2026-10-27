@@ -11,6 +11,15 @@ export function ContactForm() {
   const [date, setDate] = useState("")
   const [people, setPeople] = useState("2 pessoas")
   const [message, setMessage] = useState("")
+  const [minDate, setMinDate] = useState("")
+
+  useEffect(() => {
+    const today = new Date()
+    const year = today.getFullYear()
+    const month = String(today.getMonth() + 1).padStart(2, "0")
+    const day = String(today.getDate()).padStart(2, "0")
+    setMinDate(`${year}-${month}-${day}`)
+  }, [])
 
   const send = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
