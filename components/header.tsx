@@ -7,7 +7,7 @@ import { Menu, PhoneCall, X } from "lucide-react"
 const links = [
   { href: "#destinos", label: "Destinos" },
   { href: "#servicos", label: "Experiências" },
-  { href: "#depoimentos", label: "Por que viajar conosco" },
+  { href: "#depoimentos", label: "Nosso cuidado" },
   { href: "#contato", label: "Contato" },
 ]
 
@@ -20,7 +20,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    const onScroll = () => setScrolled(window.scrollY > 12)
     onScroll()
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
@@ -39,10 +39,8 @@ export function Header() {
 
   return (
     <header
-      className={`site-header fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled || open
-          ? "border-b border-stone-200/70 bg-white/95 text-stone-900 shadow-sm backdrop-blur-xl"
-          : "bg-stone-950/25 text-white backdrop-blur-md"
+      className={`site-header fixed inset-x-0 top-0 z-50 border-b border-stone-200/70 bg-[#fbfaf7]/95 text-stone-900 backdrop-blur-xl transition-shadow duration-300 ${
+        scrolled || open ? "shadow-[0_8px_28px_rgba(40,30,20,0.06)]" : "shadow-none"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-4 py-3 md:px-6">
@@ -56,20 +54,20 @@ export function Header() {
             className="h-10 w-10 rounded-full object-contain"
           />
           <span className="font-serif text-lg font-semibold tracking-tight md:text-xl">
-            HA <span className="text-gold">Serra</span> Turismo
+            HA <span className="text-[#967344]">Serra</span> Turismo
           </span>
         </a>
 
         <nav aria-label="Navegação principal" className="hidden items-center gap-7 lg:flex">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className="nav-link text-sm font-medium">
+            <a key={link.href} href={link.href} className="nav-link text-sm font-medium text-stone-600 hover:text-stone-950">
               {link.label}
             </a>
           ))}
         </nav>
 
         <div className="hidden lg:block">
-          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="button-gold inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold">
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="header-cta inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold">
             <PhoneCall size={16} aria-hidden="true" />
             Planejar viagem
           </a>
@@ -78,7 +76,7 @@ export function Header() {
         <button
           type="button"
           onClick={() => setOpen((value) => !value)}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-current/20 transition hover:bg-black/5 lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-stone-300 text-stone-800 transition hover:bg-stone-100 lg:hidden"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
           aria-controls="mobile-navigation"
@@ -89,8 +87,8 @@ export function Header() {
 
       <div
         id="mobile-navigation"
-        className={`overflow-hidden transition-all duration-300 lg:hidden ${
-          open ? "max-h-96 border-t border-stone-200/70" : "max-h-0"
+        className={`overflow-hidden bg-[#fbfaf7] transition-all duration-300 lg:hidden ${
+          open ? "max-h-96 border-t border-stone-200" : "max-h-0"
         }`}
         aria-hidden={!open}
       >
@@ -101,7 +99,7 @@ export function Header() {
               href={link.href}
               onClick={closeMenu}
               tabIndex={open ? 0 : -1}
-              className="rounded-xl px-3 py-3 text-sm font-medium transition hover:bg-stone-100"
+              className="rounded-xl px-3 py-3 text-sm font-medium text-stone-700 transition hover:bg-stone-100"
             >
               {link.label}
             </a>
@@ -112,7 +110,7 @@ export function Header() {
             rel="noopener noreferrer"
             onClick={closeMenu}
             tabIndex={open ? 0 : -1}
-            className="button-gold mt-2 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold"
+            className="header-cta mt-2 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold"
           >
             <PhoneCall size={16} aria-hidden="true" />
             Planejar viagem pelo WhatsApp
